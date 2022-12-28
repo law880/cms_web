@@ -1,0 +1,17 @@
+<h1 class="text-center">User Profile</h1>
+<div class="container m-1" *ngIf="user; else elseBlock">
+    <div class="row g-5 mb-1">
+        <div class="col-6 text-end">Name:</div>
+        <div class="col-6 text-start">{{user.name}}</div>
+    </div>
+    <div class="row g-5">
+        <div class="col-6 text-end">Email:</div>
+        <div class="col-6 text-start">{{user.email}}</div>
+    </div>
+</div>
+
+<ng-template #elseBlock>
+    <div class="alert alert-danger">
+        User information is not currently available. Please refresh the page and try again
+    </div>
+</ng-template>

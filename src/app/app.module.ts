@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SecurityModule } from './security/security.module';
 import { AuthButtonComponent } from './security/auth-button/auth-button.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AuthButtonComponent } from './security/auth-button/auth-button.componen
     AppRoutingModule,
     SecurityModule,
     AuthModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
