@@ -1,0 +1,4 @@
+<app-logout-button *ngIf="isAuthenticated; else loginButton"></app-logout-button>
+<ng-template #loginButton>
+    <app-login-button></app-login-button>
+</ng-template>
