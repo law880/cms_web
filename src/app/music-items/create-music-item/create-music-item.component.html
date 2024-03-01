@@ -1,0 +1,52 @@
+<div class="modal-header">
+	<h4 class="modal-title">Create a Music Item</h4>
+	<button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')" [disabled]="formSubmitted"></button>
+</div>
+<div class="modal-body">
+	<form [formGroup]="createMiForm">
+		<div class="mb-3">
+			<label class="form-label" for="mi-name">Name</label>
+			<input class="form-control ng-invalid" type="text" id="mi-name" formControlName="name" />
+			<div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="alert alert-danger">
+				<div *ngIf="name?.errors?.['required']">Music item name is required.</div>
+				<div *ngIf="name?.errors?.['minlength']">Name must be at least 4 characters long.</div>
+				<div *ngIf="name?.errors?.['maxLength']">Name must be under 50 characters long</div>
+			</div>
+		</div>
+		<div class="mb-3">
+			<label class="form-label" for="short-desc">Short Description</label>
+			<input class="form-control" type="text" id="short-desc" formControlName="shortDescription" />
+			<div *ngIf="shortDesc?.invalid && (shortDesc?.dirty || shortDesc?.touched)" class="alert alert-danger">
+				<div *ngIf="shortDesc?.errors?.['required']">A short description is required.</div>
+				<div *ngIf="shortDesc?.errors?.['maxLength']">The short description must be under 50 characters long</div>
+			</div>
+		</div>
+		<div class="mb-3">
+			<label class="form-label" for="long-desc">Long Description</label>
+			<input class="form-control" type="text" id="long-desc" formControlName="longDescription" />
+			<div *ngIf="longDesc?.invalid && (longDesc?.dirty || longDesc?.touched)" class="alert alert-danger">
+				<div *ngIf="longDesc?.errors?.['required']">A long description is required.</div>
+				<div *ngIf="longDesc?.errors?.['maxLength']">The long description must be under 2000 characters long</div>
+			</div>
+		</div>
+		<div class="mb-3">
+			<label class="form-label" for="size">Size</label>
+			<input class="form-control" type="number" id="size" formControlName="size" />
+			<div *ngIf="size?.invalid && (size?.dirty || size?.touched)" class="alert alert-danger">
+				<div *ngIf="size?.errors?.['required']">Size is required.</div>
+				<div *ngIf="size?.errors?.['min']">Size must be greater than 0</div>
+			</div>
+		</div>
+		<div class="mb-3">
+			<label class="form-label" for="instrument">Instrument</label>
+			<input class="form-control" type="text" id="instrument" formControlName="instrument" />
+			<div *ngIf="instrument?.invalid && (instrument?.dirty || instrument?.touched)" class="alert alert-danger">
+				<div *ngIf="instrument?.errors?.['required']">Instrument is required.</div>
+			</div>
+		</div>
+	</form>
+</div>
+<div class="modal-footer">
+	<button type="button" [disabled]="formSubmitted || createMiForm.invalid" class="btn btn-outline-primary" (click)="submitForm()">Create</button>
+	<button type="button" [disabled]="formSubmitted" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div>
