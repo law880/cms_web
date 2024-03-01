@@ -3,7 +3,6 @@
 	<button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')" [disabled]="formSubmitted"></button>
 </div>
 <div class="modal-body">
-	<p>Form goes here</p>
 	<form [formGroup]="createMiForm">
 		<div class="mb-3">
 			<label class="form-label" for="mi-name">Name</label>
@@ -48,6 +47,6 @@
 	</form>
 </div>
 <div class="modal-footer">
-	<button type="button" [disabled]="formSubmitted" class="btn btn-outline-primary" (click)="submitForm()">Create</button>
-	<button type="button" [disabled]="formSubmitted || createMiForm.invalid" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+	<button type="button" [disabled]="formSubmitted || createMiForm.invalid" class="btn btn-outline-primary" (click)="submitForm()">Create</button>
+	<button type="button" [disabled]="formSubmitted" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
 </div>

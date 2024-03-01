@@ -10,6 +10,9 @@ import { ToastComponent } from './toast/toast.component';
   imports: [
     CommonModule,
     NgbToast
+  ],
+  exports: [
+    ToastComponent
   ]
 })
 export class CoreModule { }

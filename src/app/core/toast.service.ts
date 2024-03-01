@@ -13,7 +13,7 @@ export interface Toast {
 export class ToastService {
   toastList: Toast[] = [];
 
-  show(header: string, body: string, delay = undefined, classNames = '') {
+  show(header: string, body: string, delay: number = 0, classNames = '') {
     this.toastList.push({header, body, delay, classNames});
   }
 

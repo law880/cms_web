@@ -9,6 +9,7 @@ import { SecurityModule } from './security/security.module';
 import { MusicItemsModule } from './music-items/music-items.module';
 import { AuthButtonComponent } from './security/auth-button/auth-button.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -17,10 +18,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SecurityModule,
-    AuthModule,
+    //SecurityModule,
+    //AuthModule,
     NgbModule,
-    MusicItemsModule
+    MusicItemsModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

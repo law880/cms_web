@@ -3,5 +3,6 @@
     [header]="toast.header"
     [autohide]="true"
     [delay]="toast.delay || 5000"
+    [ngClass]="toast.classNames"
     (hidden)="toastService.remove(toast)"
 >{{toast.body}}</ngb-toast>

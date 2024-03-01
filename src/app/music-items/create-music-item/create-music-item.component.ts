@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, Validators } from '@angular/forms';
-import { MusicItem } from '../music-item.model';
+import { CreateMusicItemDto } from '../music-item.model';
 import { MusicItemsService } from '../music-items.service';
 
 @Component({
@@ -14,15 +14,11 @@ export class CreateMusicItemComponent {
 
   createMiForm = this.fb.group({
     name: ['', Validators.required],
-    shortDescription: ['', Validators.required, Validators.minLength(1), Validators.maxLength(50)],
-    longDescription: ['', Validators.required, Validators.minLength(1), Validators.maxLength(2000)],
+    shortDescription: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50)]],
+    longDescription: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(2000)]],
     size: ['', Validators.min(1)],
     instrument: ['', Validators.required]
   });
-
-  @Output() success = new EventEmitter<MusicItem>();
-  @Output() error = new EventEmitter<Error>();
-  @Output() cancel = new EventEmitter<string>();
 
 	constructor(
     public activeModal: NgbActiveModal,
@@ -41,7 +37,6 @@ export class CreateMusicItemComponent {
   get instrument() { return this.createMiForm.get('instrument'); }
 
   processCancellation(reason: string) {
-    this.cancel.emit(reason);
     this.activeModal.close();
   }
 
@@ -49,19 +44,20 @@ export class CreateMusicItemComponent {
     if(this.formSubmitted !== true && this.createMiForm.valid) {
       this.formSubmitted = true;
       //create model from entered values
-      const newMiModel = MusicItem.fromCreation(
+      const newMiModel = new CreateMusicItemDto(
         this.name?.value!, 
         this.shortDesc?.value!, 
         this.longDesc?.value!, 
         Number(this.size?.value!),
         this.instrument?.value!
       );
+      console.log(newMiModel);
       //send request
       this.musicItemsService.create(newMiModel)
       .subscribe(newMi => {
-        this.success.emit(newMi);
+        this.activeModal.close(newMi);
       }, error => {
-        this.error.emit(error);
+        this.activeModal.dismiss(error);
       });
     }
   }

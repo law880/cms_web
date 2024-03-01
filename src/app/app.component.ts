@@ -9,11 +9,11 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class AppComponent {
   title = 'cms_web';
-  authenticated = false;
+  //authenticated = false;
   
-  constructor(private authService: AuthService) {}
+  constructor() {}
 
-  ngOnInit() {
-    this.authService.isAuthenticated$.subscribe(authenticated => this.authenticated = authenticated);
-  }
+  //ngOnInit() {
+    //this.authService.isAuthenticated$.subscribe(authenticated => this.authenticated = authenticated);
+  //}
 }
