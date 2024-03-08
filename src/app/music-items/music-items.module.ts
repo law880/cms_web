@@ -4,13 +4,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CreateMusicItemComponent } from './create-music-item/create-music-item.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MusicItemsListComponent } from './music-items-list/music-items-list.component';
 
 
 
 @NgModule({
   declarations: [
     CreateMusicItemComponent,
-    HomeComponent
+    HomeComponent,
+    MusicItemsListComponent
   ],
   imports: [
     CommonModule,

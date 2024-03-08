@@ -1,0 +1,22 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Date Created</th>
+            <th scope="col">Last Modified</th>
+            <th scope="col">Description</th>
+            <th scope="col">Size</th>
+            <th scope="col">Instrument</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of musicItems">
+            <td>{{ item.name }}</td>
+            <td>{{ item.created | date }}</td>
+            <td>{{ item.lastModified | date }}</td>
+            <td>{{ item.shortDescription }}</td>
+            <td>{{ item.size }}</td>
+            <td>{{ item.instrument }}</td>
+        </tr>
+    </tbody>
+    </table>
